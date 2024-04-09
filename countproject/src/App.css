@@ -1,0 +1,30 @@
+.App {
+
+  width: 300px;
+  margin: 0 auto;
+}
+.App > div{
+  background-color: antiquewhite
+}
+.counter-div{
+
+  margin : 0 auto;
+  margin-top: 10px;
+  padding: 20px;
+  background-color: bisque;
+  border-radius: 10px;
+}
+.buttons-div{
+
+  padding: 20px;
+  border-radius: 10px;
+  background-color: bisque;
+  margin: 0 auto;
+  margin-top: 8px;
+}
+.header-div{
+  font-size: 30px;
+}
+
+
+
