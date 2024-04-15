@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 해당 파일에 모든 쿼리문을 작성 -->
+<mapper namespace="boardMapper">
+    <resultMap id="board" type="com.green.reactBoard.vo.BoardVO">
+        <id column="BOARD_NUM" property="boardNum" />
+        <result column="TITLE" property="title" />
+        <result column="CONTENT" property="content" />
+        <result column="WRITER" property="writer" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="READ_CNT" property="readCnt" />
+    </resultMap>
+
+    <select id="selectBoardList" resultMap="board">
+        select * FROM BOARD
+    </select>
+    
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
