@@ -65,7 +65,7 @@ function App() {
 const [boardList , setBoardList] = useState([]);
 
 useEffect(()=>{
-  return()=>{
+  
     axios.get('/getList')
     .then((response)=>{
   
@@ -74,7 +74,7 @@ useEffect(()=>{
     .catch((error)=>{
       console.log(error)
     });
-  }
+  
 },[])
 
 

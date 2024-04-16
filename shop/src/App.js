@@ -12,8 +12,9 @@ import axios from 'axios';
 //설치 후 index.js 세팅
 //Route 기능 사용을 위한 import
 function App() {
+  
   const [itemsList, setItemsList] = useState(mockData);
-  //useNavigate 선언
+  //useNavigate 선언 이동할때 사용
   const navigate = useNavigate();
 
   const [data, setData] = useState([]);
@@ -24,10 +25,22 @@ function App() {
         setData(response.data);
       });
   }, []);
-  console.log(`받아온 데이터 수 : ${data.length}`)
+  // console.log(`받아온 데이터 수 : ${data.length}`)
+
+  function moreData(){
+    axios.get('https://codingapple1.github.io/shop/data2.json')
+    .then((response) => {
+        setItemsList([...itemsList, ...response.data])
+    }).catch(err=>{console.log(err)})
+
+  }
+  
+
+
+
   return (
     <div className="App">
-      <ul>
+      {/* <ul>
         {
         data.map((e,idx)=>{
           return(
@@ -35,7 +48,7 @@ function App() {
           )
         })
       }
-      </ul>
+      </ul> */}
       
 
       <Navbar bg="dark" data-bs-theme="dark">
@@ -55,14 +68,15 @@ function App() {
       {/* 라우터 연습 */}
       {/* 상품목록 */}
       <Routes>
-        <Route path='/' element={<ItemList itemsList={itemsList}></ItemList>}></Route>
-        <Route path='/detail' element={<ItemDetail></ItemDetail>}></Route>
+        <Route path='/' element={<ItemList itemsList={itemsList} moreData = {moreData}></ItemList>}></Route>
+        <Route path='/detail/:id' element={<ItemDetail itemsList = {itemsList}></ItemDetail>}></Route>
       </Routes>
 
       {/* Link */}
       <Link to='/detail'>상세페이지</Link>
       {/* useNavigate*/}
       <button className='btn btn-success' onClick={() => navigate('detail')}>상세페이지이동</button>
+      
 
     </div>
   );
