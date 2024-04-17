@@ -4,6 +4,8 @@ import com.green.reactBoard.service.BoardService;
 import com.green.reactBoard.vo.BoardVO;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,4 +26,13 @@ public class TestController {
     public List<BoardVO> getList(){
         return boardService.selectBoardList();
     }
+
+    @PostMapping("/insertBoard")
+    public void insertBoard(@RequestBody BoardVO boardVO){
+        System.out.println(boardVO);
+        int boardNum = boardService.searchMaxBoardNum();
+        boardVO.setBoardNum(boardNum);
+        boardService.insertBoard(boardVO);
+    }
+
 }

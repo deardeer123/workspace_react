@@ -1,1 +1,7 @@
+.container{
+    text-align: center;
+}
 
+.link-span{
+    cursor: pointer;
+}

@@ -15,6 +15,38 @@
     <select id="selectBoardList" resultMap="board">
         select * FROM BOARD
     </select>
+
+    <select id="searchMaxBoardNum" resultType="int">
+        SELECT
+            CASE
+                when MAX(board_NUM) = 0 then 1
+                ELSE MAX(board_num)+1
+            END
+        FROM
+            board
+    </select>
+
+    <insert id="insertBoard">
+        INSERT INTO BOARD(
+            board_num,
+            title,
+            writer,
+            content
+        )
+        VALUES(
+            #{boardNum},
+            #{title} ,
+            #{writer} ,
+            #{content}
+        )
+    </insert>
+
+    <update id="updateCnt">
+        update board
+        set read_cnt = read_cnt + 1
+        where
+        board_num = #{boardNum}
+    </update>
     
 
 </mapper>
