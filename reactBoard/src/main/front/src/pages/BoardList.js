@@ -1,7 +1,19 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import axios from "axios";
 
-function BoardList({ boardList }) {
+function BoardList() {
     const navigate = useNavigate();
+
+    let [boardList, setBoardList] = useState({});
+    useEffect(() => {
+        axios.get("/getList").then(
+            (response) => {
+                console.log(response.data)
+                setBoardList(response.data)
+            }
+        ).catch((e) => { console.log(e) })
+    }, [])
     return (
         <>
             {/* 게시글 목록 페이지 */}

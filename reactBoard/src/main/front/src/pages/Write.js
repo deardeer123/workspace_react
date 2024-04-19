@@ -64,9 +64,6 @@ const Write = () => {
                             <div>내용 : {boardInfo.content}</div>
                         </div>:null
                     }
-
-
-
                     <div className="row mt-5">
                         <div className="col">
                             <input type="button" className="btn btn-primary" value={'글쓰기'} onClick={(e) => {

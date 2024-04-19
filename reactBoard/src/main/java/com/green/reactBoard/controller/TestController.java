@@ -3,10 +3,8 @@ package com.green.reactBoard.controller;
 import com.green.reactBoard.service.BoardService;
 import com.green.reactBoard.vo.BoardVO;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +32,25 @@ public class TestController {
         boardVO.setBoardNum(boardNum);
         boardService.insertBoard(boardVO);
     }
+
+    @GetMapping("detailBoard/{boardNum}")
+    public BoardVO detailBoard(@PathVariable(name = "boardNum") int boardNum){
+        System.out.println("메소드실행!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+        return boardService.selectBoardOne(boardNum);
+    }
+    @GetMapping("deleteBoard/{boardNum}")
+    public void deleteBoard(@PathVariable("boardNum")int boardNum){
+        System.out.println("삭제 메소드 실행!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        boardService.deleteBoard(boardNum);
+    }
+
+    @PostMapping("/modifyBoard")
+    public void modifyBoard(@RequestBody BoardVO boardVO){
+        System.out.println(boardVO);
+        boardService.updateBoard(boardVO);
+    }
+
+
 
 }

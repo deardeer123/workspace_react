@@ -13,7 +13,13 @@
     </resultMap>
 
     <select id="selectBoardList" resultMap="board">
-        select * FROM BOARD
+        select * FROM BOARD order by BOARD_NUM desc
+    </select>
+
+    <select id="selectBoardOne" resultMap="board">
+        select *
+        from board
+        where board_num = #{boardNum}
     </select>
 
     <select id="searchMaxBoardNum" resultType="int">
@@ -46,6 +52,17 @@
         set read_cnt = read_cnt + 1
         where
         board_num = #{boardNum}
+    </update>
+
+    <delete id="deleteBoard">
+        delete from board
+        where board_num = #{boardNum}
+    </delete>
+
+    <update id="updateBoard">
+        update board
+        set content = #{content}
+        where board_num = #{boardNum}
     </update>
     
 

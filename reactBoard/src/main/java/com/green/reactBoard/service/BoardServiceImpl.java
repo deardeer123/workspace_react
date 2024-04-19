@@ -32,7 +32,24 @@ public class BoardServiceImpl implements BoardService{
 
     //게시물 조회수 증가 시키기
     @Override
-    public void updateCnt() {
-        sqlSession.update("boardMapper.updateCnt");
+    public void updateCnt(int boardNum) {
+        sqlSession.update("boardMapper.updateCnt",boardNum);
+    }
+
+    @Override
+    public BoardVO selectBoardOne(int boardNum) {
+        sqlSession.update("boardMapper.updateCnt",boardNum);
+        return sqlSession.selectOne("boardMapper.selectBoardOne", boardNum);
+    }
+
+    //게시물 하나 삭제하기
+    @Override
+    public void deleteBoard(int boardNum) {
+        sqlSession.delete("boardMapper.deleteBoard",boardNum);
+    }
+    //게시물 수정하기
+    @Override
+    public void updateBoard(BoardVO boardVO) {
+        sqlSession.update("boardMapper.updateBoard",boardVO);
     }
 }
