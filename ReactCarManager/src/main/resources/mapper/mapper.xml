@@ -42,6 +42,22 @@
         )
     </insert>
 
+    <insert id="insertSalesInfo">
+        INSERT INTO sales_info(
+        BUYER ,
+        TEL ,
+        COLOR ,
+        CAR_NUM)
+        VALUES(
+        #{buyer},
+        #{tel},
+        #{color},
+        #{carNum}
+        );
+    </insert>
+
+
+
 </mapper>
 
 

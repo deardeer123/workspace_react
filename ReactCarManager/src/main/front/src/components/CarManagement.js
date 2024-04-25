@@ -10,7 +10,7 @@ function CarManagement() {
     let [chk, setChk] = useState(0);
     let [chk2, setChk2] = useState(false);
 
-    
+
     let [regCarInfo, setRegCarInfo] = useState([]);
 
 
@@ -27,9 +27,9 @@ function CarManagement() {
 
     //마운트 될때는 실행, 컴포넌트가 업데이트 될때 (재 렌더링 state변수가 바뀔때)
     const [cnt, setCnt] = useState(0);
-    useEffect(()=>{
+    useEffect(() => {
         console.log(cnt)
-    },[cnt])
+    }, [cnt])
 
 
     useEffect((
@@ -51,17 +51,17 @@ function CarManagement() {
     //등록 버튼 클릭 시 실행
     const insertCar = (e) => {
         // document.querySelector('input[name="modelName"]').value == ''
-        if(carInfo.modelName == ''){
+        if (carInfo.modelName == '') {
             alert("모델명 확인.")
             //
             modelNameRef.current.forcus();
-            return ;
+            return;
         }
-        if(carInfo.price == 0){
+        if (carInfo.price == 0) {
             alert("가격 확인.")
-            return ;
+            return;
         }
-        if(carInfo.modelName == '' || carInfo.price ==''){
+        if (carInfo.modelName == '' || carInfo.price == '') {
             alert('빈값 확인.')
         }
 
@@ -69,7 +69,7 @@ function CarManagement() {
             .then((response) => {
                 //modelName를 가리키는 태그의 현재 value값을 ''으로 만듬
                 modelNameRef.current.value = ''
-                priceRef.current.value=''
+                priceRef.current.value = ''
                 setCarInfo({
                     modelName: '',
                     price: 0,
@@ -78,12 +78,12 @@ function CarManagement() {
 
 
                 axios.get('/carList')
-                .then((response) => {
-                    console.log(response.data)
-                    setRegCarInfo(response.data)
-                    setChk(chk+1)
-                })
-                .catch((err) => { console.log(err) })
+                    .then((response) => {
+                        console.log(response.data)
+                        setRegCarInfo(response.data)
+                        setChk(chk + 1)
+                    })
+                    .catch((err) => { console.log(err) })
             })
             .catch(err => {
                 console.log(err)
@@ -93,8 +93,8 @@ function CarManagement() {
 
     return (
         <>
-            <button type="button" value={"asdf"} onClick={()=>{
-                setCnt(cnt+1)
+            <button type="button" value={"asdf"} onClick={() => {
+                setCnt(cnt + 1)
             }}></button>
             <h4>차량 등록</h4>
             <div className="row">
@@ -117,13 +117,13 @@ function CarManagement() {
                 <div className="col-4">
                     <span>
                         차량가격
-                        <input className="form-control" name="price" 
-                        ref={priceRef} onChange={setData}
-                        onKeyDown={(e)=>{
-                            if(e.key == 'Enter'){
-                                insertCar()
-                            }
-                        }}></input>
+                        <input className="form-control" name="price"
+                            ref={priceRef} onChange={setData}
+                            onKeyDown={(e) => {
+                                if (e.key == 'Enter') {
+                                    insertCar()
+                                }
+                            }}></input>
                     </span>
                 </div>
             </div>

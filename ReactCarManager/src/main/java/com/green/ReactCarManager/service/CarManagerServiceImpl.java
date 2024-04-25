@@ -1,6 +1,7 @@
 package com.green.ReactCarManager.service;
 
 import com.green.ReactCarManager.vo.CarInfoVO;
+import com.green.ReactCarManager.vo.SalesInfoVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,5 +20,10 @@ public class CarManagerServiceImpl implements CarManagerService{
     @Override
     public void insertCarInfo(CarInfoVO carInfoVO) {
         sqlSession.insert("carMapper.insertCarInfo", carInfoVO);
+    }
+
+    @Override
+    public void insertSalesInfo(SalesInfoVO salesInfoVO) {
+        sqlSession.insert("carMapper.insertSalesInfo", salesInfoVO);
     }
 }

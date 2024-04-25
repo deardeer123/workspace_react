@@ -2,6 +2,7 @@ package com.green.ReactCarManager.controller;
 
 import com.green.ReactCarManager.service.CarManagerService;
 import com.green.ReactCarManager.vo.CarInfoVO;
+import com.green.ReactCarManager.vo.SalesInfoVO;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,12 @@ public class CarManagerController {
     public List<CarInfoVO> insertCarInfo(@RequestBody CarInfoVO carInfoVO){
         carManagerService.insertCarInfo(carInfoVO);
         return carManagerService.selectCarInfoList();
+    }
+
+    @PostMapping("/salesInfo")
+    public void insertSalesInfo(@RequestBody SalesInfoVO salesInfoVO){
+        System.out.println(salesInfoVO);
+        carManagerService.insertSalesInfo(salesInfoVO);
     }
 
 }
