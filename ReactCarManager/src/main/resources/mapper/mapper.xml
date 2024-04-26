@@ -56,6 +56,19 @@
         );
     </insert>
 
+    <select id="selectSalesList" resultMap="salesInfo">
+        SELECT
+        BUYER ,
+        TEL ,
+        SALES_DATE ,
+        color ,
+        model_name ,
+        price
+        FROM
+        car_info INNER JOIN sales_info
+        ON car_info.CAR_NUM = sales_info.CAR_NUM
+    </select>
+
 
 
 </mapper>

@@ -11,7 +11,7 @@ import java.util.List;
 @Service("carManagerService")
 public class CarManagerServiceImpl implements CarManagerService{
     @Autowired
-    SqlSessionTemplate sqlSession;
+    private SqlSessionTemplate sqlSession;
     @Override
     public List<CarInfoVO> selectCarInfoList() {
         return sqlSession.selectList("carMapper.selectCarInfoList");
@@ -25,5 +25,10 @@ public class CarManagerServiceImpl implements CarManagerService{
     @Override
     public void insertSalesInfo(SalesInfoVO salesInfoVO) {
         sqlSession.insert("carMapper.insertSalesInfo", salesInfoVO);
+    }
+
+    @Override
+    public List<SalesInfoVO> selectSalesList() {
+        return sqlSession.selectList("carMapper.selectSalesList");
     }
 }

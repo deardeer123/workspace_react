@@ -9,4 +9,5 @@ public interface CarManagerService {
     List<CarInfoVO> selectCarInfoList();
     void insertCarInfo(CarInfoVO carInfoVO);
     void insertSalesInfo(SalesInfoVO salesInfoVO);
+    List<SalesInfoVO> selectSalesList();
 }
